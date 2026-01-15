@@ -8,7 +8,7 @@ const FRAME_PATH = "/frames/ezgif-frame-";
 
 // Loading Spinner Component
 const LoadingSpinner = ({ progress }: { progress: number }) => (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#080808]">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#000000]">
         <div className="relative w-24 h-24">
             {/* Outer ring */}
             <svg className="w-full h-full animate-spin" viewBox="0 0 100 100">
@@ -169,7 +169,7 @@ export default function NeuroBridgeScroll() {
         loadAllImages();
     }, []);
 
-    // Draw frame to canvas
+    // Draw frame to canvas with cropping
     const drawFrame = useCallback((index: number) => {
         const canvas = canvasRef.current;
         const ctx = canvas?.getContext("2d");
@@ -177,14 +177,29 @@ export default function NeuroBridgeScroll() {
 
         if (!canvas || !ctx || !img) return;
 
-        // Set canvas dimensions based on image
-        if (canvas.width !== img.width || canvas.height !== img.height) {
-            canvas.width = img.width;
-            canvas.height = img.height;
+        // Cropping percentages
+        const cropTopPercent = 0.20;    // 20% from top
+        const cropBottomPercent = 0.20; // 20% from bottom
+        const cropRightPercent = 0.03;  // 3% from right
+
+        // Calculate source crop dimensions
+        const srcX = 0;
+        const srcY = img.height * cropTopPercent;
+        const srcWidth = img.width * (1 - cropRightPercent);
+        const srcHeight = img.height * (1 - cropTopPercent - cropBottomPercent);
+
+        // Set canvas dimensions to match cropped aspect ratio
+        const newWidth = srcWidth;
+        const newHeight = srcHeight;
+
+        if (canvas.width !== newWidth || canvas.height !== newHeight) {
+            canvas.width = newWidth;
+            canvas.height = newHeight;
         }
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0);
+        // Draw cropped portion of image to fill canvas
+        ctx.drawImage(img, srcX, srcY, srcWidth, srcHeight, 0, 0, canvas.width, canvas.height);
     }, [images]);
 
     // Update canvas on scroll
@@ -225,7 +240,7 @@ export default function NeuroBridgeScroll() {
             {/* Main scroll container - always rendered for ref attachment */}
             <div
                 ref={containerRef}
-                className="relative h-[400vh] bg-[#010101]"
+                className="relative h-[400vh] bg-[#000000]"
                 style={{ visibility: isLoading ? 'hidden' : 'visible' }}
             >
                 {/* Sticky Canvas Container */}

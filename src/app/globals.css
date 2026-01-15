@@ -2,7 +2,7 @@
 
 /* Pure Dark Mode Theme - matching image background */
 :root {
-  --background: #080808;
+  --background: #000000;
   --foreground: #ffffff;
   --text-heading: rgba(255, 255, 255, 0.9);
   --text-body: rgba(255, 255, 255, 0.6);
@@ -36,7 +36,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #080808;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -95,12 +95,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #080808;
+  background: #000000;
 }
 
 .scroll-canvas canvas {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 80%;
+  max-height: 80%;
   object-fit: contain;
 }
 

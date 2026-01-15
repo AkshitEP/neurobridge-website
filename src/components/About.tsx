@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 const stats = [
     { value: "50M+", label: "People who could benefit" },
     { value: "10x", label: "Faster than typing" },
-    { value: "99%", label: "Intent accuracy" },
+    { value: "60%", label: "Intent accuracy" },
     { value: "24/7", label: "Always available" },
 ];
 
 export default function About() {
     return (
-        <section id="about" className="section-padding bg-[#080808]">
+        <section id="about" className="section-padding bg-[#000000]">
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     {/* Left column - Text */}
