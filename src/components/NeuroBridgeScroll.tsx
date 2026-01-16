@@ -2,9 +2,14 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useTheme } from "next-themes";
 
 const TOTAL_FRAMES = 240;
-const FRAME_PATH = "/frames/ezgif-frame-";
+
+// Frame paths for different themes
+const getFramePath = (theme: string | undefined) => {
+    return theme === "light" ? "/frames-white/ezgif-frame-" : "/frames-black/ezgif-frame-";
+};
 
 // Loading Spinner Component
 const LoadingSpinner = ({ progress }: { progress: number }) => (
@@ -104,6 +109,10 @@ export default function NeuroBridgeScroll() {
     const [loadProgress, setLoadProgress] = useState(0);
     const [isMounted, setIsMounted] = useState(false);
     const currentFrameRef = useRef(0);
+    const { theme, resolvedTheme } = useTheme();
+
+    // Use resolvedTheme for actual theme value (handles 'system' theme)
+    const currentTheme = resolvedTheme || theme;
 
     // Set mounted state after hydration
     useEffect(() => {
@@ -126,8 +135,16 @@ export default function NeuroBridgeScroll() {
     const frameIndex = useTransform(smoothProgress, [0, 1], [0, TOTAL_FRAMES - 1]);
     const [currentProgress, setCurrentProgress] = useState(0);
 
-    // Load images on mount
+    // Load images on mount and when theme changes
     useEffect(() => {
+        // Don't load until mounted (to avoid hydration issues with theme)
+        if (!isMounted) return;
+
+        // Reset loading state when theme changes
+        setIsLoading(true);
+        setLoadProgress(0);
+
+        const framePath = getFramePath(currentTheme);
         let loadedCount = 0;
         const loadedImages: HTMLImageElement[] = [];
 
@@ -135,7 +152,7 @@ export default function NeuroBridgeScroll() {
             return new Promise((resolve) => {
                 const img = new Image();
                 const frameNumber = String(index + 1).padStart(3, "0");
-                img.src = `${FRAME_PATH}${frameNumber}.jpg`;
+                img.src = `${framePath}${frameNumber}.jpg`;
 
                 img.onload = () => {
                     loadedImages[index] = img;
@@ -167,7 +184,7 @@ export default function NeuroBridgeScroll() {
         };
 
         loadAllImages();
-    }, []);
+    }, [isMounted, currentTheme]);
 
     // Draw frame to canvas with cropping
     const drawFrame = useCallback((index: number) => {
