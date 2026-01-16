@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import ThemeToggle from "./ThemeToggle";
+// ThemeToggle import kept but button hidden - dark mode code preserved
+// import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
     { name: "Home", href: "#home" },
@@ -62,7 +63,7 @@ export default function Navbar() {
                                 {link.name}
                             </Link>
                         ))}
-                        <ThemeToggle />
+                        {/* ThemeToggle removed - dark mode button hidden */}
                         <Link
                             href="#contact"
                             className="px-5 py-2.5 bg-[var(--foreground)] text-[var(--background)] text-sm font-medium rounded-full hover:opacity-90 transition-all hover:scale-105"
@@ -73,7 +74,7 @@ export default function Navbar() {
 
                     {/* Mobile Menu Button */}
                     <div className="flex items-center gap-4 md:hidden">
-                        <ThemeToggle />
+                        {/* ThemeToggle removed */}
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             className="w-10 h-10 flex items-center justify-center"

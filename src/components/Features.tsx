@@ -72,7 +72,7 @@ export default function Features() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <span className="text-sm uppercase tracking-widest text-indigo-400 mb-4 block">
+                    <span className="section-label mb-4 block">
                         Features
                     </span>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--text-heading)] mb-6">
@@ -84,7 +84,7 @@ export default function Features() {
                     </p>
                 </motion.div>
 
-                {/* Features grid */}
+                {/* Features grid - AWS style cards */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {features.map((feature, index) => (
                         <motion.div
@@ -93,17 +93,24 @@ export default function Features() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="p-6 rounded-2xl glass card-hover"
+                            className="feature-card group"
                         >
-                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center text-indigo-400 mb-4">
+                            {/* Icon with gradient background */}
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 flex items-center justify-center text-indigo-500 mb-5 group-hover:from-indigo-500/20 group-hover:to-purple-500/20 transition-all duration-300">
                                 {feature.icon}
                             </div>
-                            <h3 className="text-xl font-semibold text-[var(--text-heading)] mb-2">
+                            <h3 className="text-lg font-semibold text-[var(--text-heading)] mb-2">
                                 {feature.title}
                             </h3>
-                            <p className="text-[var(--text-body)] leading-relaxed">
+                            <p className="text-[var(--text-body)] leading-relaxed text-sm">
                                 {feature.description}
                             </p>
+                            {/* Arrow indicator like AWS */}
+                            <div className="mt-5 flex items-center text-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

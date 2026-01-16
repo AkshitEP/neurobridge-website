@@ -1,7 +1,27 @@
 @import "tailwindcss";
 
-/* Dark Mode Theme (default) */
+/* Light Mode Theme (default) */
 :root,
+[data-theme="light"] {
+  --background: #fafbfc;
+  --foreground: #16171a;
+  --text-heading: #16171a;
+  --text-body: #5a5d66;
+  --accent: #4f46e5;
+  --accent-hover: #6366f1;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --scrollbar-track: #fafbfc;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.12);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.2);
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.06);
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --gradient-border-start: rgba(99, 102, 241, 0.4);
+  --gradient-border-end: rgba(236, 72, 153, 0.4);
+}
+
+/* Dark Mode Theme (code preserved for future use) */
 [data-theme="dark"] {
   --background: #000000;
   --foreground: #ffffff;
@@ -14,21 +34,11 @@
   --scrollbar-track: #000000;
   --scrollbar-thumb: rgba(255, 255, 255, 0.15);
   --scrollbar-thumb-hover: rgba(255, 255, 255, 0.25);
-}
-
-/* Light Mode Theme */
-[data-theme="light"] {
-  --background: #ffffff;
-  --foreground: #111111;
-  --text-heading: rgba(0, 0, 0, 0.9);
-  --text-body: rgba(0, 0, 0, 0.6);
-  --accent: #4f46e5;
-  --accent-hover: #6366f1;
-  --glass-bg: rgba(0, 0, 0, 0.03);
-  --glass-border: rgba(0, 0, 0, 0.08);
-  --scrollbar-track: #ffffff;
-  --scrollbar-thumb: rgba(0, 0, 0, 0.15);
-  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.25);
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --gradient-border-start: rgba(99, 102, 241, 0.3);
+  --gradient-border-end: rgba(236, 72, 153, 0.3);
 }
 
 @theme inline {
@@ -139,32 +149,218 @@ body {
   pointer-events: none;
 }
 
-/* Gradient Text Effect */
+/* Gradient Text Effect - Updated for light mode */
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
+  background: linear-gradient(135deg, var(--text-heading) 0%, var(--text-body) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glass effect */
+/* Glass effect - Updated for light mode */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
 }
 
 /* Glow effect */
 .glow {
-  box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
 }
 
-/* Card hover effect */
+/* AWS-style Feature Card */
+.feature-card {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+/* Rainbow gradient border on bottom-right corner */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      #a855f7 20%,
+      #ec4899 50%,
+      #f97316 80%,
+      #f97316 100%);
+  border-radius: 0 0 16px 0;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.feature-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 3px;
+  height: 40%;
+  background: linear-gradient(180deg,
+      transparent 0%,
+      #a855f7 30%,
+      #ec4899 60%,
+      #f97316 100%);
+  border-radius: 0 0 16px 0;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover::before {
+  width: 80%;
+  opacity: 1;
+}
+
+.feature-card:hover::after {
+  height: 60%;
+  opacity: 1;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Stat Card - Similar styling with rainbow border */
+.stat-card {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Rainbow gradient border on bottom-right corner */
+.stat-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      #a855f7 20%,
+      #ec4899 50%,
+      #f97316 80%,
+      #f97316 100%);
+  border-radius: 0 0 16px 0;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 3px;
+  height: 30%;
+  background: linear-gradient(180deg,
+      transparent 0%,
+      #a855f7 30%,
+      #ec4899 60%,
+      #f97316 100%);
+  border-radius: 0 0 16px 0;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover::before {
+  width: 70%;
+  opacity: 1;
+}
+
+.stat-card:hover::after {
+  height: 50%;
+  opacity: 1;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Card hover effect - Legacy support */
 .card-hover {
   transition: all 0.3s ease;
 }
 
 .card-hover:hover {
   transform: translateY(-4px);
-  border-color: rgba(99, 102, 241, 0.5);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* Enhanced button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+  color: white;
+  font-weight: 500;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.35);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-heading);
+  font-weight: 500;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--card-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+  background: var(--glass-bg);
+  border-color: var(--accent);
+}
+
+/* Badge styling */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border: 1px solid rgba(79, 70, 229, 0.15);
+}
+
+.badge span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, #4f46e5 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section label */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
 }

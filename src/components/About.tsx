@@ -20,7 +20,7 @@ export default function About() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <span className="text-sm uppercase tracking-widest text-indigo-400 mb-4 block">
+                        <span className="section-label mb-4 block">
                             Our Mission
                         </span>
                         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[var(--text-heading)] mb-6">
@@ -43,7 +43,7 @@ export default function About() {
                         </div>
                     </motion.div>
 
-                    {/* Right column - Stats */}
+                    {/* Right column - Stats with AWS-style cards */}
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -57,9 +57,9 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="p-6 rounded-2xl glass text-center"
+                                className="stat-card text-center"
                             >
-                                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-2">
+                                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent mb-2">
                                     {stat.value}
                                 </div>
                                 <div className="text-sm text-[var(--text-body)]">{stat.label}</div>

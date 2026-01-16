@@ -8,12 +8,13 @@ const TOTAL_FRAMES = 240;
 
 // Frame paths for different themes
 const getFramePath = (theme: string | undefined) => {
-    return theme === "light" ? "/frames-white/ezgif-frame-" : "/frames-black/ezgif-frame-";
+    // Default to white frames for light mode (or when theme is undefined)
+    return theme === "dark" ? "/frames-black/ezgif-frame-" : "/frames-white/ezgif-frame-";
 };
 
 // Loading Spinner Component
 const LoadingSpinner = ({ progress }: { progress: number }) => (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#000000]">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[var(--background)]">
         <div className="relative w-24 h-24">
             {/* Outer ring */}
             <svg className="w-full h-full animate-spin" viewBox="0 0 100 100">
@@ -22,7 +23,7 @@ const LoadingSpinner = ({ progress }: { progress: number }) => (
                     cy="50"
                     r="45"
                     fill="none"
-                    stroke="rgba(255,255,255,0.1)"
+                    stroke="var(--text-body)"
                     strokeWidth="2"
                 />
                 <circle
@@ -30,7 +31,7 @@ const LoadingSpinner = ({ progress }: { progress: number }) => (
                     cy="50"
                     r="45"
                     fill="none"
-                    stroke="rgba(255,255,255,0.9)"
+                    stroke="var(--text-heading)"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeDasharray={`${progress * 2.83} 283`}
@@ -39,12 +40,12 @@ const LoadingSpinner = ({ progress }: { progress: number }) => (
             </svg>
             {/* Center percentage */}
             <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-lg font-light tracking-tight text-white/90">
+                <span className="text-lg font-light tracking-tight text-[var(--text-heading)]">
                     {Math.round(progress)}%
                 </span>
             </div>
         </div>
-        <p className="mt-8 text-sm tracking-widest text-white/60 uppercase">
+        <p className="mt-8 text-sm tracking-widest text-[var(--text-body)] uppercase">
             Loading NeuroBridge
         </p>
     </div>
@@ -257,7 +258,7 @@ export default function NeuroBridgeScroll() {
             {/* Main scroll container - always rendered for ref attachment */}
             <div
                 ref={containerRef}
-                className="relative h-[400vh] bg-[#000000]"
+                className="relative h-[400vh] bg-[var(--background)]"
                 style={{ visibility: isLoading ? 'hidden' : 'visible' }}
             >
                 {/* Sticky Canvas Container */}

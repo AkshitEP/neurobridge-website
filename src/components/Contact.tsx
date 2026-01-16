@@ -15,9 +15,9 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="section-padding bg-[#000000] relative overflow-hidden">
-            {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/10 via-transparent to-transparent" />
+        <section id="contact" className="section-padding bg-[var(--background)] relative overflow-hidden">
+            {/* Background gradient - Updated for light mode */}
+            <div className="absolute inset-0 bg-gradient-to-t from-indigo-100/30 via-transparent to-transparent" />
 
             <div className="max-w-4xl mx-auto relative z-10">
                 <motion.div
@@ -26,29 +26,29 @@ export default function Contact() {
                     viewport={{ once: true }}
                     className="text-center"
                 >
-                    <span className="text-sm uppercase tracking-widest text-indigo-400 mb-4 block">
+                    <span className="section-label mb-4 block">
                         Join the Waitlist
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white/90 mb-6">
-                        Be the first to know<span className="text-white/40">.</span>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--text-heading)] mb-6">
+                        Be the first to know<span className="text-[var(--text-body)]">.</span>
                     </h2>
-                    <p className="text-lg text-white/60 max-w-2xl mx-auto mb-10">
+                    <p className="text-lg text-[var(--text-body)] max-w-2xl mx-auto mb-10">
                         NeuroBridge is currently in development. Sign up for early access
                         and be part of the communication revolution.
                     </p>
 
-                    {/* Email form */}
+                    {/* Email form - Updated styling for light mode */}
                     {submitted ? (
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="p-6 rounded-2xl glass inline-block"
+                            className="feature-card inline-block"
                         >
-                            <div className="flex items-center gap-3 text-green-400">
+                            <div className="flex items-center gap-3 text-emerald-600">
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                 </svg>
-                                <span className="text-lg">You're on the list! We'll be in touch.</span>
+                                <span className="text-lg font-medium">You're on the list! We'll be in touch.</span>
                             </div>
                         </motion.div>
                     ) : (
@@ -59,19 +59,19 @@ export default function Contact() {
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Enter your email"
                                 required
-                                className="flex-1 px-6 py-4 rounded-full bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-indigo-500 transition-colors"
+                                className="flex-1 px-6 py-4 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-heading)] placeholder:text-[var(--text-body)] focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all shadow-sm"
                             />
                             <button
                                 type="submit"
-                                className="px-8 py-4 bg-white text-black font-medium rounded-full hover:bg-white/90 transition-all hover:scale-105 whitespace-nowrap"
+                                className="btn-primary whitespace-nowrap"
                             >
                                 Get Early Access
                             </button>
                         </form>
                     )}
 
-                    {/* Trust indicators */}
-                    <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-white/40 text-sm">
+                    {/* Trust indicators - Updated for light mode */}
+                    <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-[var(--text-body)] text-sm">
                         <div className="flex items-center gap-2">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />

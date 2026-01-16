@@ -9,16 +9,16 @@ export default function Hero() {
             id="home"
             className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--background)]"
         >
-            {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-radial from-indigo-900/20 via-transparent to-transparent opacity-50" />
+            {/* Background gradient - Updated for light mode */}
+            <div className="absolute inset-0 bg-gradient-radial from-indigo-100/40 via-transparent to-transparent opacity-60" />
 
-            {/* Animated grid background */}
-            <div className="absolute inset-0 opacity-20">
+            {/* Animated grid background - Updated for light mode */}
+            <div className="absolute inset-0 opacity-30">
                 <div
                     className="absolute inset-0"
                     style={{
-                        backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                             linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
+                        backgroundImage: `linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                             linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)`,
                         backgroundSize: "60px 60px",
                     }}
                 />
@@ -35,16 +35,16 @@ export default function Hero() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 mb-8"
+                        className="badge mb-8"
                     >
-                        <span className="text-sm font-medium bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Alpha</span>
+                        <span>Alpha</span>
                     </motion.div>
 
                     {/* Main heading */}
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-[var(--text-heading)] mb-6">
                         Communication
                         <br />
-                        <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                             Reimagined
                         </span>
                     </h1>
@@ -55,51 +55,24 @@ export default function Hero() {
                         Powered by eye-tracking, context awareness, and advanced AI.
                     </p>
 
-                    {/* CTA Buttons */}
+                    {/* CTA Buttons - Updated styling */}
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link
                             href="#product"
-                            className="px-8 py-4 bg-[var(--foreground)] text-[var(--background)] font-medium rounded-full hover:opacity-90 transition-all hover:scale-105 w-full sm:w-auto"
+                            className="btn-primary w-full sm:w-auto text-center"
                         >
                             See How It Works
                         </Link>
                         <Link
                             href="#contact"
-                            className="px-8 py-4 border border-[var(--glass-border)] text-[var(--text-heading)] font-medium rounded-full hover:bg-[var(--glass-bg)] transition-all w-full sm:w-auto"
+                            className="btn-secondary w-full sm:w-auto text-center"
                         >
                             Get Early Access
                         </Link>
                     </div>
                 </motion.div>
 
-                {/* Scroll indicator */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5 }}
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2"
-                >
-                    <motion.div
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="flex flex-col items-center gap-2 text-[var(--text-body)]"
-                    >
-                        <span className="text-xs uppercase tracking-widest">Scroll</span>
-                        <svg
-                            className="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                            />
-                        </svg>
-                    </motion.div>
-                </motion.div>
+                {/* Scroll indicator removed as per user request */}
             </div>
         </section>
     );
