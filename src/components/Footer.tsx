@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = {
     product: [
@@ -52,20 +53,24 @@ const socialLinks = [
 
 export default function Footer() {
     return (
-        <footer className="bg-[#050505] border-t border-white/5">
+        <footer className="bg-[var(--background)] border-t border-[var(--glass-border)]">
             <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 md:py-16">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
                     {/* Brand */}
                     <div className="col-span-2 md:col-span-1">
-                        <Link href="#home" className="flex items-center gap-2 mb-4">
-                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                                <span className="text-white font-bold text-sm">N</span>
-                            </div>
-                            <span className="text-xl font-semibold tracking-tight text-white/90">
+                        <Link href="#home" className="flex items-center gap-3 mb-4">
+                            <Image
+                                src="/logo.jpg"
+                                alt="NeuroBridge Logo"
+                                width={32}
+                                height={32}
+                                className="rounded-lg"
+                            />
+                            <span className="text-xl font-semibold tracking-tight text-[var(--text-heading)] font-display">
                                 NeuroBridge
                             </span>
                         </Link>
-                        <p className="text-sm text-white/50 leading-relaxed mb-4">
+                        <p className="text-sm text-[var(--text-body)] leading-relaxed mb-4">
                             Transform intent into natural communication with the power of AI.
                         </p>
                         {/* Social links */}
@@ -74,7 +79,7 @@ export default function Footer() {
                                 <a
                                     key={social.name}
                                     href={social.href}
-                                    className="text-white/40 hover:text-white/80 transition-colors"
+                                    className="text-[var(--text-body)] hover:text-[var(--foreground)] transition-colors"
                                     aria-label={social.name}
                                 >
                                     {social.icon}
@@ -85,13 +90,13 @@ export default function Footer() {
 
                     {/* Product links */}
                     <div>
-                        <h3 className="text-sm font-semibold text-white/90 mb-4">Product</h3>
+                        <h3 className="text-sm font-semibold text-[var(--text-heading)] mb-4">Product</h3>
                         <ul className="space-y-3">
                             {footerLinks.product.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-sm text-white/50 hover:text-white/80 transition-colors"
+                                        className="text-sm text-[var(--text-body)] hover:text-[var(--foreground)] transition-colors"
                                     >
                                         {link.name}
                                     </Link>
@@ -102,13 +107,13 @@ export default function Footer() {
 
                     {/* Company links */}
                     <div>
-                        <h3 className="text-sm font-semibold text-white/90 mb-4">Company</h3>
+                        <h3 className="text-sm font-semibold text-[var(--text-heading)] mb-4">Company</h3>
                         <ul className="space-y-3">
                             {footerLinks.company.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-sm text-white/50 hover:text-white/80 transition-colors"
+                                        className="text-sm text-[var(--text-body)] hover:text-[var(--foreground)] transition-colors"
                                     >
                                         {link.name}
                                     </Link>
@@ -119,13 +124,13 @@ export default function Footer() {
 
                     {/* Legal links */}
                     <div>
-                        <h3 className="text-sm font-semibold text-white/90 mb-4">Legal</h3>
+                        <h3 className="text-sm font-semibold text-[var(--text-heading)] mb-4">Legal</h3>
                         <ul className="space-y-3">
                             {footerLinks.legal.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-sm text-white/50 hover:text-white/80 transition-colors"
+                                        className="text-sm text-[var(--text-body)] hover:text-[var(--foreground)] transition-colors"
                                     >
                                         {link.name}
                                     </Link>
@@ -136,11 +141,11 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom bar */}
-                <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-sm text-white/40">
+                <div className="pt-8 border-t border-[var(--glass-border)] flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-sm text-[var(--text-body)]">
                         © {new Date().getFullYear()} NeuroBridge. All rights reserved.
                     </p>
-                    <p className="text-sm text-white/40">
+                    <p className="text-sm text-[var(--text-body)]">
                         Built with ❤️ for accessibility
                     </p>
                 </div>

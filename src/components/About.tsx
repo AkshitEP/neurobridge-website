@@ -11,7 +11,7 @@ const stats = [
 
 export default function About() {
     return (
-        <section id="about" className="section-padding bg-[#000000]">
+        <section id="about" className="section-padding bg-[var(--background)]">
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     {/* Left column - Text */}
@@ -23,10 +23,10 @@ export default function About() {
                         <span className="text-sm uppercase tracking-widest text-indigo-400 mb-4 block">
                             Our Mission
                         </span>
-                        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-white/90 mb-6">
-                            Giving voice to those who cannot speak<span className="text-white/40">.</span>
+                        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[var(--text-heading)] mb-6">
+                            Giving voice to those who cannot speak<span className="text-[var(--text-body)]">.</span>
                         </h2>
-                        <div className="space-y-4 text-white/60 leading-relaxed">
+                        <div className="space-y-4 text-[var(--text-body)] leading-relaxed">
                             <p>
                                 Millions of people worldwide live with conditions that affect their ability
                                 to speak—ALS, cerebral palsy, stroke, and many others. Current communication
@@ -62,7 +62,7 @@ export default function About() {
                                 <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-2">
                                     {stat.value}
                                 </div>
-                                <div className="text-sm text-white/60">{stat.label}</div>
+                                <div className="text-sm text-[var(--text-body)]">{stat.label}</div>
                             </motion.div>
                         ))}
                     </motion.div>

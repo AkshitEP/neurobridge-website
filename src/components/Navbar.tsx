@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
     { name: "Home", href: "#home" },
@@ -29,18 +31,22 @@ export default function Navbar() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? "bg-[#000000]/90 backdrop-blur-lg border-b border-white/10"
+                ? "bg-[var(--background)]/90 backdrop-blur-lg border-b border-[var(--glass-border)]"
                 : "bg-transparent"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16 md:h-20">
                     {/* Logo */}
-                    <Link href="#home" className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                            <span className="text-white font-bold text-sm">N</span>
-                        </div>
-                        <span className="text-xl font-semibold tracking-tight text-white/90">
+                    <Link href="#home" className="flex items-center gap-3">
+                        <Image
+                            src="/logo.jpg"
+                            alt="NeuroBridge Logo"
+                            width={36}
+                            height={36}
+                            className="rounded-lg"
+                        />
+                        <span className="text-xl font-semibold tracking-tight text-[var(--text-heading)] font-display">
                             NeuroBridge
                         </span>
                     </Link>
@@ -51,39 +57,43 @@ export default function Navbar() {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm text-white/60 hover:text-white transition-colors"
+                                className="text-sm text-[var(--text-body)] hover:text-[var(--foreground)] transition-colors"
                             >
                                 {link.name}
                             </Link>
                         ))}
+                        <ThemeToggle />
                         <Link
                             href="#contact"
-                            className="px-5 py-2.5 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-all hover:scale-105"
+                            className="px-5 py-2.5 bg-[var(--foreground)] text-[var(--background)] text-sm font-medium rounded-full hover:opacity-90 transition-all hover:scale-105"
                         >
                             Get Early Access
                         </Link>
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden w-10 h-10 flex items-center justify-center"
-                    >
-                        <div className="flex flex-col gap-1.5">
-                            <motion.span
-                                animate={isMobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                                className="w-6 h-0.5 bg-white/90 block"
-                            />
-                            <motion.span
-                                animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                                className="w-6 h-0.5 bg-white/90 block"
-                            />
-                            <motion.span
-                                animate={isMobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                                className="w-6 h-0.5 bg-white/90 block"
-                            />
-                        </div>
-                    </button>
+                    <div className="flex items-center gap-4 md:hidden">
+                        <ThemeToggle />
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="w-10 h-10 flex items-center justify-center"
+                        >
+                            <div className="flex flex-col gap-1.5">
+                                <motion.span
+                                    animate={isMobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+                                    className="w-6 h-0.5 bg-[var(--text-heading)] block"
+                                />
+                                <motion.span
+                                    animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                                    className="w-6 h-0.5 bg-[var(--text-heading)] block"
+                                />
+                                <motion.span
+                                    animate={isMobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+                                    className="w-6 h-0.5 bg-[var(--text-heading)] block"
+                                />
+                            </div>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -94,7 +104,7 @@ export default function Navbar() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-[#000000]/95 backdrop-blur-lg border-b border-white/10"
+                        className="md:hidden bg-[var(--background)]/95 backdrop-blur-lg border-b border-[var(--glass-border)]"
                     >
                         <div className="px-6 py-4 flex flex-col gap-4">
                             {navLinks.map((link) => (
@@ -102,7 +112,7 @@ export default function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-white/60 hover:text-white transition-colors py-2"
+                                    className="text-[var(--text-body)] hover:text-[var(--foreground)] transition-colors py-2"
                                 >
                                     {link.name}
                                 </Link>
@@ -110,7 +120,7 @@ export default function Navbar() {
                             <Link
                                 href="#contact"
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="px-5 py-3 bg-white text-black text-center font-medium rounded-full mt-2"
+                                className="px-5 py-3 bg-[var(--foreground)] text-[var(--background)] text-center font-medium rounded-full mt-2"
                             >
                                 Get Early Access
                             </Link>
@@ -121,3 +131,4 @@ export default function Navbar() {
         </motion.nav>
     );
 }
+

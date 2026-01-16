@@ -258,10 +258,10 @@ export default function NeuroBridgeScroll() {
                         showEnd={0.2}
                         position="center"
                     >
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-white/90 mb-4">
-                            NeuroBridge<span className="text-white/40">.</span>
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-[var(--text-heading)] mb-4">
+                            <span className="font-display">NeuroBridge</span><span className="text-[var(--text-body)]">.</span>
                         </h1>
-                        <p className="text-xl md:text-2xl lg:text-3xl font-light tracking-tight text-white/60">
+                        <p className="text-xl md:text-2xl lg:text-3xl font-light tracking-tight text-[var(--text-body)]">
                             Intent-Based Communication
                         </p>
                     </TextOverlay>
@@ -273,10 +273,10 @@ export default function NeuroBridgeScroll() {
                         showEnd={0.45}
                         position="left"
                     >
-                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white/90 mb-3">
-                            See the World<span className="text-white/40">.</span>
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-[var(--text-heading)] mb-3">
+                            See the World<span className="text-[var(--text-body)]">.</span>
                         </h2>
-                        <p className="text-lg md:text-xl font-light text-white/60 max-w-md">
+                        <p className="text-lg md:text-xl font-light text-[var(--text-body)] max-w-md">
                             Advanced vision sensors capture your environment in real-time,
                             providing context for natural communication.
                         </p>
@@ -289,10 +289,10 @@ export default function NeuroBridgeScroll() {
                         showEnd={0.7}
                         position="right"
                     >
-                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white/90 mb-3">
-                            Think in Intent<span className="text-white/40">.</span>
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-[var(--text-heading)] mb-3">
+                            Think in Intent<span className="text-[var(--text-body)]">.</span>
                         </h2>
-                        <p className="text-lg md:text-xl font-light text-white/60 max-w-md ml-auto">
+                        <p className="text-lg md:text-xl font-light text-[var(--text-body)] max-w-md ml-auto">
                             Neural processing transforms your intentions into meaningful
                             expressions, powered by cutting-edge AI.
                         </p>
@@ -305,14 +305,14 @@ export default function NeuroBridgeScroll() {
                         showEnd={1}
                         position="center"
                     >
-                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white/90 mb-6">
-                            Speak Naturally<span className="text-white/40">.</span>
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-[var(--text-heading)] mb-6">
+                            Speak Naturally<span className="text-[var(--text-body)]">.</span>
                         </h2>
-                        <p className="text-lg md:text-xl font-light text-white/60 mb-8 max-w-lg mx-auto">
+                        <p className="text-lg md:text-xl font-light text-[var(--text-body)] mb-8 max-w-lg mx-auto">
                             Experience communication without barriers.
                             NeuroBridge gives voice to your thoughts.
                         </p>
-                        <button className="px-8 py-4 bg-white text-black font-medium rounded-full hover:bg-white/90 transition-all duration-300 hover:scale-105 pointer-events-auto">
+                        <button className="px-8 py-4 bg-[var(--foreground)] text-[var(--background)] font-medium rounded-full hover:opacity-90 transition-all duration-300 hover:scale-105 pointer-events-auto">
                             Learn More
                         </button>
                     </TextOverlay>

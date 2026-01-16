@@ -63,7 +63,7 @@ const features = [
 
 export default function Features() {
     return (
-        <section id="features" className="section-padding bg-[#000000]">
+        <section id="features" className="section-padding bg-[var(--background)]">
             <div className="max-w-7xl mx-auto">
                 {/* Section header */}
                 <motion.div
@@ -75,10 +75,10 @@ export default function Features() {
                     <span className="text-sm uppercase tracking-widest text-indigo-400 mb-4 block">
                         Features
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white/90 mb-6">
-                        Everything you need<span className="text-white/40">.</span>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--text-heading)] mb-6">
+                        Everything you need<span className="text-[var(--text-body)]">.</span>
                     </h2>
-                    <p className="text-lg text-white/60 max-w-2xl mx-auto">
+                    <p className="text-lg text-[var(--text-body)] max-w-2xl mx-auto">
                         NeuroBridge combines cutting-edge hardware with intelligent software
                         to create the most advanced assistive communication device.
                     </p>
@@ -98,10 +98,10 @@ export default function Features() {
                             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center text-indigo-400 mb-4">
                                 {feature.icon}
                             </div>
-                            <h3 className="text-xl font-semibold text-white/90 mb-2">
+                            <h3 className="text-xl font-semibold text-[var(--text-heading)] mb-2">
                                 {feature.title}
                             </h3>
-                            <p className="text-white/60 leading-relaxed">
+                            <p className="text-[var(--text-body)] leading-relaxed">
                                 {feature.description}
                             </p>
                         </motion.div>
