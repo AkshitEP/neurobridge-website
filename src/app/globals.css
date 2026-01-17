@@ -3,7 +3,7 @@
 /* Light Mode Theme (default) */
 :root,
 [data-theme="light"] {
-  --background: #fafbfc;
+  --background: #ffffff;
   --foreground: #16171a;
   --text-heading: #16171a;
   --text-body: #5a5d66;
@@ -11,7 +11,7 @@
   --accent-hover: #6366f1;
   --glass-bg: rgba(255, 255, 255, 0.8);
   --glass-border: rgba(0, 0, 0, 0.06);
-  --scrollbar-track: #fafbfc;
+  --scrollbar-track: #ffffff;
   --scrollbar-thumb: rgba(0, 0, 0, 0.12);
   --scrollbar-thumb-hover: rgba(0, 0, 0, 0.2);
   --card-bg: #ffffff;
