@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 
 const stats = [
-    { value: "50M+", label: "People who could benefit" },
+    { value: "500K+", label: "People who could benefit" },
     { value: "10x", label: "Faster than typing" },
-    { value: "60%", label: "Intent accuracy" },
+    { value: "70%", label: "Intent accuracy" },
     { value: "24/7", label: "Always available" },
 ];
 
@@ -23,8 +23,8 @@ export default function About() {
                         <span className="section-label mb-4 block">
                             Our Mission
                         </span>
-                        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[var(--text-heading)] mb-6">
-                            Giving voice to those who cannot speak<span className="text-[var(--text-body)]">.</span>
+                        <h2 className="text-4xl md:text-5xl font-semibold tracking-[-0.02em] text-[var(--text-heading)] mb-6">
+                            Giving voice to those who cannot speak<span className="text-[var(--text-muted)]">.</span>
                         </h2>
                         <div className="space-y-4 text-[var(--text-body)] leading-relaxed">
                             <p>
@@ -33,7 +33,7 @@ export default function About() {
                                 devices are slow, frustrating, and often fail to capture true intent.
                             </p>
                             <p>
-                                NeuroBridge changes everything. By combining eye-tracking, environmental
+                                <span className="font-display">NeuroBridge</span> changes everything. By combining eye-tracking, environmental
                                 awareness, and predictive AI, we've created a system that understands not
                                 just what you want to say, but the context in which you want to say it.
                             </p>

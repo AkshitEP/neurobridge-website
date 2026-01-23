@@ -60,7 +60,7 @@ export default function Footer() {
                     <div className="col-span-2 md:col-span-1">
                         <Link href="#home" className="flex items-center gap-3 mb-4">
                             <Image
-                                src="/logo.jpg"
+                                src="/logo.png"
                                 alt="NeuroBridge Logo"
                                 width={32}
                                 height={32}

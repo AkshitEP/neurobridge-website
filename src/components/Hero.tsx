@@ -40,8 +40,8 @@ export default function Hero() {
                         <span>Alpha</span>
                     </motion.div>
 
-                    {/* Main heading */}
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-[var(--text-heading)] mb-6">
+                    {/* Main heading - solid text, gradient only on "Reimagined" */}
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.03em] text-[var(--text-heading)] mb-6">
                         Communication
                         <br />
                         <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
@@ -49,9 +49,9 @@ export default function Hero() {
                         </span>
                     </h1>
 
-                    {/* Subheading */}
-                    <p className="text-lg md:text-xl text-[var(--text-body)] max-w-2xl mx-auto mb-10 leading-relaxed">
-                        NeuroBridge transforms intent into natural speech for those who cannot speak.
+                    {/* Subheading - proper weight and color */}
+                    <p className="text-lg md:text-xl text-[var(--text-body)] max-w-2xl mx-auto mb-10">
+                        <span className="font-display">NeuroBridge</span> transforms intent into natural speech for those who cannot speak.
                         Powered by eye-tracking, context awareness, and advanced AI.
                     </p>
 

@@ -41,7 +41,7 @@ export default function Navbar() {
                     {/* Logo */}
                     <Link href="#home" className="flex items-center gap-3">
                         <Image
-                            src="/logo.jpg"
+                            src="/logo.png"
                             alt="NeuroBridge Logo"
                             width={36}
                             height={36}

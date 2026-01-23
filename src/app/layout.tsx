@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const inter = Inter({
@@ -36,7 +37,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${playfair.variable} antialiased`} suppressHydrationWarning>
         <ThemeProvider>
-          {children}
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
         </ThemeProvider>
       </body>
     </html>

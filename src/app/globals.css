@@ -4,9 +4,10 @@
 :root,
 [data-theme="light"] {
   --background: #ffffff;
-  --foreground: #16171a;
-  --text-heading: #16171a;
-  --text-body: #5a5d66;
+  --foreground: #111827;
+  --text-heading: #111827;
+  --text-body: #374151;
+  --text-muted: #6b7280;
   --accent: #4f46e5;
   --accent-hover: #6366f1;
   --glass-bg: rgba(255, 255, 255, 0.8);
@@ -48,9 +49,26 @@
   --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
 }
 
-/* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
+/* Smooth Scrolling with Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 body {
@@ -90,9 +108,59 @@ body {
   color: var(--text-body);
 }
 
-/* Display Font for brand */
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* Display Font for brand name "NeuroBridge" only */
 .font-display {
   font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+}
+
+/* ========================================
+   TYPOGRAPHY SCALE - Consistent Weights
+   ======================================== 
+   Hero H1: 700-800
+   Section titles: 600
+   Card titles: 500
+   Body: 400
+   ======================================== */
+
+/* Heading styles with proper letter-spacing */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* Body text with proper line-height and max-width */
+p {
+  line-height: 1.6;
+  max-width: 65ch;
+  font-weight: 400;
+  color: var(--text-body);
+}
+
+/* Hero heading specific */
+.hero-heading {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* Section heading */
+.section-heading {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Card title */
+.card-title {
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 /* Section styling */
@@ -170,16 +238,41 @@ body {
   box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
 }
 
-/* AWS-style Feature Card */
+/* AWS-style Feature Card with Premium Effects */
 .feature-card {
   position: relative;
-  background: var(--card-bg);
-  border-radius: 16px;
+  /* Glassmorphism-lite: soft background with transparency */
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.7) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* Neumorphism-inspired: smooth rounded corners */
+  border-radius: 20px;
   padding: 2rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid var(--card-border);
-  box-shadow: var(--card-shadow);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Soft border for depth */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  /* Multi-layered soft shadows for floating effect */
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 10px 15px -3px rgba(0, 0, 0, 0.08),
+    0 20px 25px -5px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
   overflow: hidden;
+}
+
+/* Dark mode card styling */
+[data-theme="dark"] .feature-card {
+  background: linear-gradient(135deg,
+      rgba(30, 30, 40, 0.8) 0%,
+      rgba(20, 20, 30, 0.6) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.2),
+    0 10px 15px -3px rgba(0, 0, 0, 0.3),
+    0 20px 25px -5px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* Rainbow gradient border on bottom-right corner */
@@ -196,9 +289,9 @@ body {
       #ec4899 50%,
       #f97316 80%,
       #f97316 100%);
-  border-radius: 0 0 16px 0;
-  opacity: 0.8;
-  transition: all 0.3s ease;
+  border-radius: 0 0 20px 0;
+  opacity: 0.7;
+  transition: all 0.4s ease;
 }
 
 .feature-card::after {
@@ -213,9 +306,9 @@ body {
       #a855f7 30%,
       #ec4899 60%,
       #f97316 100%);
-  border-radius: 0 0 16px 0;
-  opacity: 0.8;
-  transition: all 0.3s ease;
+  border-radius: 0 0 20px 0;
+  opacity: 0.7;
+  transition: all 0.4s ease;
 }
 
 .feature-card:hover::before {
@@ -228,21 +321,66 @@ body {
   opacity: 1;
 }
 
+/* Hover state with glow + stronger elevation */
 .feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px) scale(1.02);
+  /* Enhanced layered shadows on hover */
+  box-shadow:
+    0 8px 10px -3px rgba(0, 0, 0, 0.06),
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 40px 50px -12px rgba(0, 0, 0, 0.08),
+    /* Gradient glow effect */
+    0 0 40px rgba(99, 102, 241, 0.15),
+    0 0 80px rgba(168, 85, 247, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-/* Stat Card - Similar styling with rainbow border */
+[data-theme="dark"] .feature-card:hover {
+  box-shadow:
+    0 8px 10px -3px rgba(0, 0, 0, 0.3),
+    0 20px 25px -5px rgba(0, 0, 0, 0.4),
+    0 40px 50px -12px rgba(0, 0, 0, 0.3),
+    /* Gradient glow effect for dark mode */
+    0 0 50px rgba(99, 102, 241, 0.25),
+    0 0 100px rgba(168, 85, 247, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Stat Card - Premium styling with floating effect */
 .stat-card {
   position: relative;
-  background: var(--card-bg);
-  border-radius: 16px;
+  /* Glassmorphism-lite: soft background with transparency */
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.75) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Neumorphism-inspired: smooth rounded corners */
+  border-radius: 20px;
   padding: 1.5rem;
-  border: 1px solid var(--card-border);
-  box-shadow: var(--card-shadow);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Soft border for depth */
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  /* Multi-layered soft shadows for floating effect */
+  box-shadow:
+    0 2px 4px -1px rgba(0, 0, 0, 0.04),
+    0 8px 12px -3px rgba(0, 0, 0, 0.06),
+    0 16px 20px -5px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+}
+
+/* Dark mode stat card */
+[data-theme="dark"] .stat-card {
+  background: linear-gradient(145deg,
+      rgba(35, 35, 45, 0.85) 0%,
+      rgba(25, 25, 35, 0.65) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 2px 4px -1px rgba(0, 0, 0, 0.15),
+    0 8px 12px -3px rgba(0, 0, 0, 0.25),
+    0 16px 20px -5px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 /* Rainbow gradient border on bottom-right corner */
@@ -259,9 +397,9 @@ body {
       #ec4899 50%,
       #f97316 80%,
       #f97316 100%);
-  border-radius: 0 0 16px 0;
-  opacity: 0.8;
-  transition: all 0.3s ease;
+  border-radius: 0 0 20px 0;
+  opacity: 0.7;
+  transition: all 0.4s ease;
 }
 
 .stat-card::after {
@@ -276,9 +414,9 @@ body {
       #a855f7 30%,
       #ec4899 60%,
       #f97316 100%);
-  border-radius: 0 0 16px 0;
-  opacity: 0.8;
-  transition: all 0.3s ease;
+  border-radius: 0 0 20px 0;
+  opacity: 0.7;
+  transition: all 0.4s ease;
 }
 
 .stat-card:hover::before {
@@ -291,8 +429,28 @@ body {
   opacity: 1;
 }
 
+/* Hover state with glow + stronger elevation */
 .stat-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 6px 8px -2px rgba(0, 0, 0, 0.05),
+    0 16px 20px -4px rgba(0, 0, 0, 0.08),
+    0 32px 40px -8px rgba(0, 0, 0, 0.06),
+    /* Gradient glow effect */
+    0 0 30px rgba(99, 102, 241, 0.12),
+    0 0 60px rgba(168, 85, 247, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .stat-card:hover {
+  box-shadow:
+    0 6px 8px -2px rgba(0, 0, 0, 0.25),
+    0 16px 20px -4px rgba(0, 0, 0, 0.35),
+    0 32px 40px -8px rgba(0, 0, 0, 0.25),
+    /* Gradient glow effect for dark mode */
+    0 0 40px rgba(99, 102, 241, 0.2),
+    0 0 80px rgba(168, 85, 247, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* Card hover effect - Legacy support */

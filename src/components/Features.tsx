@@ -75,11 +75,11 @@ export default function Features() {
                     <span className="section-label mb-4 block">
                         Features
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--text-heading)] mb-6">
-                        Everything you need<span className="text-[var(--text-body)]">.</span>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.02em] text-[var(--text-heading)] mb-6">
+                        Everything you need<span className="text-[var(--text-muted)]">.</span>
                     </h2>
                     <p className="text-lg text-[var(--text-body)] max-w-2xl mx-auto">
-                        NeuroBridge combines cutting-edge hardware with intelligent software
+                        <span className="font-display">NeuroBridge</span> combines cutting-edge hardware with intelligent software
                         to create the most advanced assistive communication device.
                     </p>
                 </motion.div>

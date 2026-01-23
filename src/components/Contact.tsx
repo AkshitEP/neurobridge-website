@@ -29,11 +29,11 @@ export default function Contact() {
                     <span className="section-label mb-4 block">
                         Join the Waitlist
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--text-heading)] mb-6">
-                        Be the first to know<span className="text-[var(--text-body)]">.</span>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.02em] text-[var(--text-heading)] mb-6">
+                        Be the first to know<span className="text-[var(--text-muted)]">.</span>
                     </h2>
                     <p className="text-lg text-[var(--text-body)] max-w-2xl mx-auto mb-10">
-                        NeuroBridge is currently in development. Sign up for early access
+                        <span className="font-display">NeuroBridge</span> is currently in development. Sign up for early access
                         and be part of the communication revolution.
                     </p>
 
